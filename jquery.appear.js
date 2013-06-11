@@ -76,7 +76,11 @@
           setTimeout(process, opts.interval);
         };
 
-        $(window).scroll(on_check).resize(on_check);
+        var scrollParent = $(this).parents().filter(function() {
+          return $(this).css('overflow') != 'hidden';
+        }).first() || $(window);
+
+        scrollParent.scroll(on_check).resize(on_check);
         check_binded = true;
       }
 
